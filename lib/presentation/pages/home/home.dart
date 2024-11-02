@@ -50,7 +50,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                         return const SettingsDialog();
                       });
                 },
-                icon: const Icon(Icons.settings))
+                icon: Icon(Icons.settings,
+                    color: Theme.of(context).colorScheme.primary)),
           ],
         ),
         body: mode == 'countUp'
