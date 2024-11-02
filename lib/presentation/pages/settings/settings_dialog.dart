@@ -45,6 +45,7 @@ class SettingsDialog extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 20),
+                  // Timer settings
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -63,6 +64,23 @@ class SettingsDialog extends ConsumerWidget {
                           int.parse(breakpercentageController.text) / 100);
                     },
                   ),
+                  // Miscellaneous settings
+                  const SizedBox(height: 20),
+                  // Timer settings
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Miscellaneous",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextButton(
+                      onPressed: () {
+                        ref.read(timerSettings).setExtraBreak(0);
+                      },
+                      child: const Text("Reset extra break time")),
                 ],
               ),
             ),

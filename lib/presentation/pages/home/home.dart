@@ -36,7 +36,6 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   String mode = 'countUp';
-  int extraBreak = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -109,8 +108,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 (StopWatchTimer.getRawSecond(value) *
                                             ref.watch(timerSettings).percentage)
                                         .round() +
-                                    extraBreak);
-                            extraBreak = 0;
+                                    ref.watch(timerSettings).extraBreak);
+                            ref.read(timerSettings).setExtraBreak(0);
                             _countDownTimer.onStartTimer();
                             mode = 'countDown';
                           });
@@ -176,7 +175,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                         icon: const Icon(Icons.skip_next),
                         onPressed: () {
                           setState(() {
-                            extraBreak = StopWatchTimer.getRawSecond(value);
+                            ref.read(timerSettings).setExtraBreak(
+                                ref.watch(timerSettings).extraBreak +
+                                    StopWatchTimer.getRawSecond(value));
                             _stopWatchTimer.onResetTimer();
                             _stopWatchTimer.onStartTimer();
                             mode = 'countUp';
