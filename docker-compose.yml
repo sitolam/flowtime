@@ -1,9 +1,7 @@
-version: '3'
-
 services:
-  flutter_web:
-    build: .
-    ports:
-      - "9000:80"
+  flowtime:
+    image: ghcr.io/sitolam/flowtime:master
     restart: unless-stopped
-
+    ports:
+      - 9000:80
+networks: {}
